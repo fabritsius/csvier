@@ -46,7 +46,7 @@ You can find this example with data in [this gist](https://gist.github.com/fabri
     - use `Limit(nrows)` to limit amount of returned rows
     - use `Delimiter('rune')` to change default comma separator
 
-Please see examples of use in [csvier_test.go](./csvier_test.go) file.
+Please see examples of use in [csvier_test.go](./csvier_test.go) file or on the [GoDoc page](https://godoc.org/github.com/fabritsius/csvier).
 
 ## License
 
