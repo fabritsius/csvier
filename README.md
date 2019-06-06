@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-    data, err := csvier.Read("data.csv")
+    data, err := csvier.ReadFile("data.csv")
     if err != nil {
         panic(err)
     }
@@ -38,9 +38,10 @@ You can find this example with data in [this gist](https://gist.github.com/fabri
 
 ## Features
 
-- use `Read(filename)` to parse a CSV file
+- use `ReadFile(filename)` to parse a CSV file
+- use `Read(reader)` to parse data from readers
 - by default first line is used to name all the fields
-- function `Read` can take additional functional options:
+- functions `Read` and `ReadFile` can take additional functional options:
     - use `Index([slice, of, names])` to set custom names to each column
     - use `Skip(nrows)` to skip N rows from the beginning
     - use `Limit(nrows)` to limit amount of returned rows
