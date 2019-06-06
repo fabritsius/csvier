@@ -13,16 +13,15 @@ type config struct {
 	delimiter rune
 }
 
-// Read function reads csv file and returns a map for each line
-func Read(fileName string, options ...func(*config) error) ([]map[string]string, error) {
+// Read parses CSV data and returns a map for each line
+func Read(csvData io.Reader, options ...func(*config) error) ([]map[string]string, error) {
 	cfg := config{}
 	// apply options to the config
 	for _, option := range options {
 		option(&cfg)
 	}
 
-	csvFile, _ := os.Open(fileName)
-	reader := csv.NewReader(csvFile)
+	reader := csv.NewReader(csvData)
 	reader.TrimLeadingSpace = true
 	if cfg.delimiter != 0 {
 		reader.Comma = cfg.delimiter
@@ -62,6 +61,16 @@ func Read(fileName string, options ...func(*config) error) ([]map[string]string,
 	}
 
 	return result, nil
+}
+
+// ReadFile function reads CSV file and returns a map for each line
+func ReadFile(csvFile string, options ...func(*config) error) ([]map[string]string, error) {
+	file, err := os.Open(csvFile)
+	if err != nil {
+		return nil, err
+	}
+
+	return Read(file, options...)
 }
 
 // Index is an option for Read() and allows to change csv index (column names)
