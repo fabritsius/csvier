@@ -1,5 +1,7 @@
 # csvier
 
+[![GoDoc](https://godoc.org/github.com/fabritsius/csvier?status.svg)](https://godoc.org/github.com/fabritsius/csvier)
+
 This Go module simplifies reading of CSV files. Parsed data is represented as a slice of maps.
 
 ## Example
